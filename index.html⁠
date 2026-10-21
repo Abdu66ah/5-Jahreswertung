@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Europäischer Herrenfußball - 5-Jahres-Koeffizient &amp; Startplatz-Monitor</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .ad-placeholder {
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+            border: 1px dashed #374151;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen font-sans flex flex-col">
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="p-2 bg-emerald-500/10 border border-emerald-500/20 rounded-lg text-emerald-400">
+                    <i data-lucide="trophy" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg leading-tight">Europäischer Herrenfußball</h1>
+                    <p class="text-xs text-slate-400">5-Jahres-Koeffizient &amp; Startplatz-Monitor</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <!-- Pro Button Trigger (Fake Door) -->
+                <button onclick="openProModal()" class="flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 px-3 py-1.5 rounded-lg font-semibold text-xs shadow-lg transition">
+                    <i data-lucide="crown" class="w-4 h-4"></i>
+                    <span>PRO-Zugang (1,99 €)</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- TOP WERBE-BANNER (Vorab angelegt) -->
+    <div class="max-w-7xl mx-auto px-4 w-full mt-4">
+        <div class="ad-placeholder rounded-xl p-3 text-center text-xs text-slate-500 flex flex-col items-center justify-center min-h-[75px]">
+            <span class="uppercase tracking-wider font-semibold text-[10px] text-slate-600 mb-1">Anzeige</span>
+            <span>Hier erscheint später deine Google AdSense Werbung (728x90 Banner)</span>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="max-w-7xl mx-auto px-4 py-6 flex-grow w-full grid grid-cols-1 lg:grid-cols-4 gap-6">
+
+        <!-- TABELLE & DASHBOARD (3 Spalten) -->
+        <div class="lg:col-span-3 space-y-6">
+
+            <!-- STEUERUNG & FILTER -->
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 flex flex-wrap items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-sm font-semibold text-slate-300">Ansicht wählen</h2>
+                    <p class="text-xs text-slate-500">Aktuelle Saison vs. Prognose für die Folgesaison</p>
+                </div>
+                <div class="flex gap-2">
+                    <button id="btn-current" onclick="switchView('current')" class="px-3 py-1.5 bg-emerald-500 text-slate-950 font-medium text-xs rounded-lg transition">
+                        Aktueller Stand (2025/26)
+                    </button>
+                    <button id="btn-next" onclick="switchView('next')" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium text-xs rounded-lg transition flex items-center gap-1.5">
+                        <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-400"></i>
+                        <span>Prognose 2026/27 (Streichjahr)</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- RANGLEISTEN TABELLE -->
+            <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-xl">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs text-slate-300">
+                        <thead class="bg-slate-950/60 text-slate-400 border-b border-slate-800">
+                            <tr>
+                                <th class="p-3 text-center">Rang</th>
+                                <th class="p-3">Nation</th>
+                                <th class="p-3 text-center">21/22</th>
+                                <th class="p-3 text-center">22/23</th>
+                                <th class="p-3 text-center">23/24</th>
+                                <th class="p-3 text-center">24/25</th>
+                                <th class="p-3 text-center">25/26</th>
+                                <th class="p-3 text-right">Gesamt-Pkt</th>
+                                <th class="p-3 text-center">Startplätze</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ranking-body" class="divide-y divide-slate-800/50">
+                            <!-- Dynamisch per JavaScript befüllt -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SIDEBAR (1 Spalte) -->
+        <aside class="space-y-6">
+
+            <!-- SIDEBAR WERBEBANNER -->
+            <div class="ad-placeholder rounded-xl p-4 text-center text-xs text-slate-500 flex flex-col items-center justify-center min-h-[250px]">
+                <span class="uppercase tracking-wider font-semibold text-[10px] text-slate-600 mb-2">Anzeige</span>
+                <span>Google AdSense Skyscraper (300x600)</span>
+            </div>
+
+            <!-- INFO CARD -->
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4">
+                <h3 class="font-semibold text-slate-200 text-sm mb-2 flex items-center gap-2">
+                    <i data-lucide="info" class="w-4 h-4 text-emerald-400"></i> Wie werden Punkte berechnet?
+                </h3>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Sieg = 2 Punkte, Unentschieden = 1 Punkt. Die Gesamtzahl der erreichten Punkte aller Klubs eines Landes wird durch die Anzahl der gestarteten Klubs geteilt.
+                </p>
+            </div>
+
+        </aside>
+
+    </main>
+
+    <!-- FOOTER WITH LEGAL DISCLAIMER -->
+    <footer class="border-t border-slate-900 bg-slate-950 py-6 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center space-y-2">
+            <p class="text-xs text-slate-500">
+                &copy; 2026 Europäischer Herrenfußball Monitor. Alle Rechte vorbehalten.
+            </p>
+            <p class="text-[11px] text-slate-600 max-w-2xl mx-auto">
+                Rechtlicher Hinweis: Diese Webseite steht in keiner offiziellen Verbindung zu europäischen Fußballverbänden oder deren Marken. Alle Bezeichnungen dienen rein der Information und Beschreibung der sportlichen Ergebnisse.
+            </p>
+        </div>
+    </footer>
+
+    <!-- PRO MODAL (FAKE DOOR TEST / WARTELISTE) -->
+    <div id="pro-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-md w-full p-6 relative shadow-2xl">
+            <button onclick="closeProModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div class="text-center space-y-4">
+                <div class="w-12 h-12 bg-amber-500/10 border border-amber-500/20 rounded-full flex items-center justify-center mx-auto text-amber-400">
+                    <i data-lucide="crown" class="w-6 h-6"></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-100">PRO-Zugang in Kürze!</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Wir arbeiten aktuell am automatisierten KI-Livenachrichtensystem und der werbefreien Version für 1,99 €/Monat.
+                </p>
+                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-3">
+                    <p class="text-xs text-amber-300 font-medium">Trage dich in die Warteliste ein &amp; erhalte 50% Rabatt zum Start:</p>
+                    <input type="email" placeholder="Deine E-Mail-Adresse..." class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-emerald-500">
+                    <button onclick="submitWaitlist()" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-2 rounded-lg text-xs transition">
+                        Auf die Warteliste setzen
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // Beispiel-Datenbestand (Erweiterbar)
+        const nations = [
+            { rank: 1, name: "England", flag: "🇬🇧", p1: 21.000, p2: 23.000, p3: 17.375, p4: 24.250, p5: 18.000, slots: { c1: 4, el: 2, ecl: 1 } },
+            { rank: 2, name: "Italien", flag: "🇮🇹", p1: 15.714, p2: 22.357, p3: 21.000, p4: 20.857, p5: 14.500, slots: { c1: 4, el: 2, ecl: 1 } },
+            { rank: 3, name: "Spanien", flag: "🇪🇸", p1: 18.428, p2: 16.571, p3: 16.000, p4: 19.357, p5: 15.000, slots: { c1: 4, el: 2, ecl: 1 } },
+            { rank: 4, name: "Deutschland", flag: "🇩🇪", p1: 16.214, p2: 14.750, p3: 19.357, p4: 18.750, p5: 13.200, slots: { c1: 4, el: 2, ecl: 1 } },
+            { rank: 5, name: "Frankreich", flag: "🇫🇷", p1: 18.416, p2: 12.583, p3: 16.250, p4: 16.000, p5: 12.100, slots: { c1: 3, el: 2, ecl: 1 } },
+            { rank: 6, name: "Niederlande", flag: "🇳🇱", p1: 19.200, p2: 13.500, p3: 10.000, p4: 14.200, p5: 11.500, slots: { c1: 2, el: 2, ecl: 1 } },
+            { rank: 7, name: "Portugal", flag: "🇵🇹", p1: 12.916, p2: 12.500, p3: 11.000, p4: 12.166, p5: 10.200, slots: { c1: 2, el: 1, ecl: 2 } }
+        ];
+
+        function renderTable(view = 'current') {
+            const tbody = document.getElementById('ranking-body');
+            tbody.innerHTML = '';
+
+            nations.forEach((n) => {
+                let total = 0;
+                if (view === 'current') {
+                    total = n.p1 + n.p2 + n.p3 + n.p4 + n.p5;
+                } else {
+                    // Streichjahr: Saison 1 (p1) wird weggelassen
+                    total = n.p2 + n.p3 + n.p4 + n.p5;
+                }
+
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-800/40 transition";
+                tr.innerHTML = `
+                    <td class="p-3 text-center font-bold text-slate-400">${n.rank}</td>
+                    <td class="p-3 font-semibold flex items-center gap-2">
+                        <span>${n.flag}</span>
+                        <span>${n.name}</span>
+                    </td>
+                    <td class="p-3 text-center ${view === 'next' ? 'line-through text-slate-600' : 'text-slate-400'}">${n.p1.toFixed(3)}</td>
+                    <td class="p-3 text-center text-slate-400">${n.p2.toFixed(3)}</td>
+                    <td class="p-3 text-center text-slate-400">${n.p3.toFixed(3)}</td>
+                    <td class="p-3 text-center text-slate-400">${n.p4.toFixed(3)}</td>
+                    <td class="p-3 text-center text-slate-400">${n.p5.toFixed(3)}</td>
+                    <td class="p-3 text-right font-bold text-emerald-400">${total.toFixed(3)}</td>
+                    <td class="p-3 text-center">
+                        <span class="bg-slate-800 text-slate-300 px-2 py-0.5 rounded border border-slate-700 text-[10px]">
+                            ${n.slots.c1} Top-Liga | ${n.slots.el} Zweit-Liga
+                        </span>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function switchView(view) {
+            const btnCurrent = document.getElementById('btn-current');
+            const btnNext = document.getElementById('btn-next');
+
+            if (view === 'current') {
+                btnCurrent.className = "px-3 py-1.5 bg-emerald-500 text-slate-950 font-medium text-xs rounded-lg transition";
+                btnNext.className = "px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium text-xs rounded-lg transition flex items-center gap-1.5";
+            } else {
+                btnNext.className = "px-3 py-1.5 bg-emerald-500 text-slate-950 font-medium text-xs rounded-lg transition flex items-center gap-1.5";
+                btnCurrent.className = "px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium text-xs rounded-lg transition";
+            }
+            renderTable(view);
+        }
+
+        function openProModal() {
+            document.getElementById('pro-modal').classList.remove('hidden');
+        }
+
+        function closeProModal() {
+            document.getElementById('pro-modal').classList.add('hidden');
+        }
+
+        function submitWaitlist() {
+            alert("Vielen Dank! Du wurdest erfolgreich auf die Warteliste gesetzt.");
+            closeProModal();
+        }
+
+        // Initiales Rendern
+        renderTable('current');
+    </script>
+</body>
+</html>
