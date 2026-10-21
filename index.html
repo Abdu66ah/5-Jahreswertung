@@ -3,7 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fünfjahreswertung der Europäischen Fußballvereine</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>UEFA 5-Jahreswertung 2026/27 LIVE | Aktueller Koeffizient & Prognose</title>
+    <meta name="description" content="Aktuelle UEFA 5-Jahreswertung 2026/27 in Echtzeit. Alle Koeffizienten-Punkte von Deutschland (DFB), England, Italien & Co. inkl. Champions League Live-Ergebnissen & Streichjahr-Prognose.">
+    <meta name="keywords" content="5-Jahreswertung, UEFA Koeffizient, Champions League Startplätze, DFB 5-Jahreswertung, UEFA Ranking live, Europa League Punkte">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://abdu66ah.github.io/5-Jahreswertung/" />
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="UEFA 5-Jahreswertung 2026/27 LIVE | Koeffizient Radar">
+    <meta property="og:description" content="Aktuelle UEFA 5-Jahreswertung & Champions League Live-Ticker. Verfolge die Punkte von Deutschland & Europa in Echtzeit.">
+    <meta property="og:url" content="https://abdu66ah.github.io/5-Jahreswertung/">
+
+    <!-- FAQ Structured Data (JSON-LD für Google Rich Snippets) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "Wie wird die UEFA 5-Jahreswertung berechnet?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Für jeden Sieg in der Hauptrunde eines UEFA-Wettbewerbs gibt es 2.000 Punkte, für ein Unentschieden 1.000 Punkt. Die Summe aller Punkte der Klubs eines Landes wird durch die Anzahl der gestarteten Klubs dieser Nation dividiert."
+        }
+      }, {
+        "@type": "Question",
+        "name": "Wie viele Champions League Startplätze bekommt Deutschland?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Die Top 4 Nationen der UEFA 5-Jahreswertung erhalten jeweils 4 direkte Startplätze für die Champions League Ligaphase. Zusätzlich können sich über die European Performance Slots (EPS) zwei weitere Nationen je einen Zusatzplatz sichern."
+        }
+      }]
+    }
+    </script>
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -13,7 +48,7 @@
             theme: {
                 extend: {
                     colors: {
-                        custom: {
+                        uefa: {
                             blue: '#001489',
                             darkBlue: '#050B29',
                             accent: '#00F0FF',
@@ -27,7 +62,7 @@
         }
     </script>
     
-    <!-- Flag Icons CDN (SVG Flags) -->
+    <!-- Flag Icons CDN (Lipis SVG Flags) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css">
     
     <!-- FontAwesome icons -->
@@ -49,7 +84,15 @@
             background: linear-gradient(135deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.05) 100%);
             border: 1px dashed rgba(0, 0, 0, 0.2);
         }
-        /* Custom Scrollbar */
+        /* Hide scrollbars for match ticker while retaining touch/scroll behavior */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        /* Custom Scrollbar for page */
         ::-webkit-scrollbar {
             width: 8px;
             height: 8px;
@@ -64,21 +107,20 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #00F0FF;
         }
-        /* Accessibility Focus Ring */
         *:focus-visible {
             outline: 2px solid #00F0FF;
             outline-offset: 2px;
         }
     </style>
 </head>
-<body class="bg-custom-darkBlue text-slate-100 min-h-screen transition-colors duration-300">
+<body class="bg-uefa-darkBlue text-slate-100 min-h-screen transition-colors duration-300">
 
     <!-- Top Header Banner Ad Placement -->
     <header class="max-w-7xl mx-auto px-4 pt-4">
         <div class="ad-placeholder rounded-lg p-2 text-center relative overflow-hidden flex flex-col items-center justify-center min-h-[90px]" aria-label="Werbung">
-            <span class="absolute top-1 right-2 text-[10px] uppercase tracking-wider text-slate-300 border border-slate-500 px-1 rounded">Anzeige</span>
+            <span class="absolute top-1 right-2 text-[10px] uppercase tracking-wider text-slate-300 border border-slate-500 px-1 rounded">Anzeige / Google AdSense</span>
             <div class="flex items-center gap-4 text-xs text-slate-300 mt-2">
-                <i class="fa-solid fa-rectangle-ad text-2xl text-custom-accent" aria-hidden="true"></i>
+                <i class="fa-solid fa-rectangle-ad text-2xl text-uefa-accent" aria-hidden="true"></i>
                 <div>
                     <p class="font-bold text-slate-200">Hier könnte Ihre Werbung stehen (Sportwetten, Streaming-Anbieter, Trikot-Shops)</p>
                     <p class="text-[11px] text-slate-400">Automatische AdSense Monetarisierung aktiv</p>
@@ -88,29 +130,29 @@
     </header>
 
     <!-- Navigation Bar -->
-    <nav class="sticky top-0 z-40 bg-custom-darkBlue/95 backdrop-blur-md border-b border-custom-borderDark mt-4" aria-label="Hauptnavigation">
+    <nav class="sticky top-0 z-40 bg-uefa-darkBlue/95 backdrop-blur-md border-b border-uefa-borderDark mt-4" aria-label="Hauptnavigation">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <!-- Logo & Title -->
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-custom-blue to-custom-accent flex items-center justify-center text-white font-extrabold text-xl shadow-lg shadow-custom-accent/20" aria-hidden="true">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-uefa-blue to-uefa-accent flex items-center justify-center text-white font-extrabold text-xl shadow-lg shadow-uefa-accent/20" aria-hidden="true">
                         5J
                     </div>
                     <div>
-                        <h1 class="font-black text-lg sm:text-xl tracking-tight bg-gradient-to-r from-white via-slate-200 to-custom-accent bg-clip-text text-transparent">
-                            Fünfjahreswertung der Europäischen Fußballvereine <span class="text-xs px-2 py-0.5 rounded bg-custom-accent/20 text-custom-accent border border-custom-accent/40 font-semibold">Live 2026/27</span>
+                        <h1 class="font-black text-lg sm:text-xl tracking-tight bg-gradient-to-r from-white via-slate-200 to-uefa-accent bg-clip-text text-transparent">
+                            UEFA 5-Jahreswertung <span class="text-xs px-2 py-0.5 rounded bg-uefa-accent/20 text-uefa-accent border border-uefa-accent/40 font-semibold">Live 2026/27</span>
                         </h1>
-                        <p class="text-xs text-slate-300 hidden sm:block">Koeffizient-Radar & Startplatz-Verteilung</p>
+                        <p class="text-xs text-slate-300 hidden sm:block">Offizieller Koeffizient-Radar & Startplatz-Verteilung</p>
                     </div>
                 </div>
 
                 <!-- Right Nav Controls -->
                 <div class="flex items-center gap-3">
-                    <button id="sync-btn" onclick="triggerAISync()" aria-label="Update-Simulation starten" class="flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-xs font-semibold px-3 py-2 rounded-lg shadow-md transition-all transform active:scale-95 focus:ring-2 focus:ring-custom-accent">
+                    <button id="sync-btn" onclick="triggerAISync()" aria-label="KI-Update Simulation starten" class="flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-xs font-semibold px-3 py-2 rounded-lg shadow-md transition-all transform active:scale-95 focus:ring-2 focus:ring-uefa-accent">
                         <i id="sync-icon" class="fa-solid fa-rotate" aria-hidden="true"></i>
-                        <span class="hidden md:inline">Update Simulation</span>
+                        <span class="hidden md:inline">KI-Update Simulation</span>
                     </button>
-                    <button onclick="toggleDarkMode()" id="theme-toggle-btn" aria-label="Dunkel- oder Hellmodus umschalten" class="p-2.5 rounded-lg bg-custom-cardDark border border-custom-borderDark text-slate-300 hover:text-white transition focus:ring-2 focus:ring-custom-accent">
+                    <button onclick="toggleDarkMode()" id="theme-toggle-btn" aria-label="Dunkel- oder Hellmodus umschalten" class="p-2.5 rounded-lg bg-uefa-cardDark border border-uefa-borderDark text-slate-300 hover:text-white transition focus:ring-2 focus:ring-uefa-accent">
                         <i id="theme-toggle-icon" class="fa-solid fa-moon" aria-hidden="true"></i>
                     </button>
                 </div>
@@ -121,8 +163,23 @@
     <!-- Main Container -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
 
-        <!-- Status Banner -->
-        <section aria-label="Status-Informationen" class="bg-gradient-to-r from-custom-cardDark to-slate-900 border border-custom-borderDark rounded-xl p-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-xl">
+        <!-- Horizontal Swipeable Live Match Ticker (Mobile-friendly) -->
+        <section aria-label="Aktuelle Europapokal Live-Spiele" class="space-y-2">
+            <div class="flex items-center justify-between px-1">
+                <h2 class="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+                    <i class="fa-solid fa-bolt text-amber-400" aria-hidden="true"></i> Live Europapokal-Spiele & Ticker
+                </h2>
+                <span class="text-[11px] text-slate-400 font-medium">Wischen zum Durchblättern &rarr;</span>
+            </div>
+            
+            <div class="flex items-center gap-3 overflow-x-auto no-scrollbar pb-2 pt-1 -mx-4 px-4 sm:mx-0 sm:px-0 scroll-smooth" id="live-match-ticker">
+                <!-- Dynamic Live Match Cards populated via JS -->
+            </div>
+        </section>
+
+        <!-- AI Status & Scraper Status Banner -->
+        <section aria-label="Status-Informationen" class="bg-gradient-to-r from-uefa-cardDark to-slate-900 border border-uefa-borderDark rounded-xl p-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-xl">
             <div class="flex items-center gap-3">
                 <div class="relative flex-shrink-0" aria-hidden="true">
                     <div class="w-3 h-3 bg-emerald-500 rounded-full animate-ping absolute"></div>
@@ -130,10 +187,10 @@
                 </div>
                 <div>
                     <h2 class="text-sm font-semibold text-slate-200 flex items-center gap-2">
-                        <i class="fa-solid fa-robot text-custom-accent" aria-hidden="true"></i> Automatische Datenaktualisierung & Scraper-Status
+                        <i class="fa-solid fa-robot text-uefa-accent" aria-hidden="true"></i> Automatische KI-Datenaktualisierung & Scraper-Status
                     </h2>
                     <p class="text-xs text-slate-300">
-                        Letzter Sync: <span id="last-update-time" class="text-white font-medium">Heute, 22:45 Uhr (Nach Spielende)</span> | Nächstes Update: <span class="text-custom-accent font-medium">Morgen, 23:00 Uhr</span>
+                        Letzter Sync: <span id="last-update-time" class="text-white font-medium">Heute, 22:45 Uhr (Nach Spielende)</span> | Nächstes KI-Update: <span class="text-uefa-accent font-medium">Morgen, 23:00 Uhr</span>
                     </p>
                 </div>
             </div>
@@ -145,19 +202,19 @@
 
         <!-- Dashboard Cards Overview -->
         <section aria-label="Kennzahlen-Übersicht" class="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div class="bg-custom-cardDark border border-custom-borderDark rounded-xl p-4">
+            <div class="bg-uefa-cardDark border border-uefa-borderDark rounded-xl p-4">
                 <p class="text-xs font-medium text-slate-300 uppercase tracking-wider">Führende Nation</p>
                 <div class="flex items-center justify-between mt-2">
                     <div class="flex items-center gap-2">
                         <span class="fi fi-gb w-6 h-4 rounded shadow-sm" aria-label="Flagge von England"></span>
                         <span class="font-bold text-lg text-white">England</span>
                     </div>
-                    <span class="text-xl font-extrabold text-custom-accent">106.428</span>
+                    <span class="text-xl font-extrabold text-uefa-accent">106.428</span>
                 </div>
                 <p class="text-[11px] text-emerald-400 mt-2"><i class="fa-solid fa-arrow-trend-up" aria-hidden="true"></i> +1.857 Punkte diese Woche</p>
             </div>
 
-            <div class="bg-custom-cardDark border border-custom-borderDark rounded-xl p-4">
+            <div class="bg-uefa-cardDark border border-uefa-borderDark rounded-xl p-4">
                 <p class="text-xs font-medium text-slate-300 uppercase tracking-wider">Deutschland (DFB)</p>
                 <div class="flex items-center justify-between mt-2">
                     <div class="flex items-center gap-2">
@@ -166,31 +223,33 @@
                     </div>
                     <span class="text-xl font-extrabold text-white">84.196</span>
                 </div>
-                <p class="text-[11px] text-slate-300 mt-2">7 von 7 Teams noch im Wettbewerb</p>
+                <p class="text-[11px] text-amber-400 mt-2 flex items-center gap-1">
+                    <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span> 2 Teams aktuell im Live-Match
+                </p>
             </div>
 
-            <div class="bg-custom-cardDark border border-custom-borderDark rounded-xl p-4">
-                <p class="text-xs font-medium text-slate-300 uppercase tracking-wider">Zusätzlicher Startplatz</p>
+            <div class="bg-uefa-cardDark border border-uefa-borderDark rounded-xl p-4">
+                <p class="text-xs font-medium text-slate-300 uppercase tracking-wider">Zusätzlicher UCL-Platz (EPS)</p>
                 <div class="flex items-center justify-between mt-2">
                     <div class="flex items-center gap-2">
-                        <i class="fa-solid fa-trophy text-custom-gold text-lg" aria-hidden="true"></i>
+                        <i class="fa-solid fa-trophy text-uefa-gold text-lg" aria-hidden="true"></i>
                         <span class="font-bold text-sm text-white">Saison-Leader</span>
                     </div>
                     <span class="text-sm font-bold text-emerald-400">ENG & ITA</span>
                 </div>
-                <p class="text-[11px] text-slate-300 mt-2">Performance Zusatz-Slot</p>
+                <p class="text-[11px] text-slate-300 mt-2">Champions League Performance Slot</p>
             </div>
 
-            <div class="bg-custom-cardDark border border-custom-borderDark rounded-xl p-4 flex flex-col justify-between">
+            <div class="bg-uefa-cardDark border border-uefa-borderDark rounded-xl p-4 flex flex-col justify-between">
                 <div class="flex justify-between items-center">
                     <p class="text-xs font-medium text-slate-300 uppercase tracking-wider">Export & Tools</p>
                     <i class="fa-solid fa-download text-slate-300" aria-hidden="true"></i>
                 </div>
                 <div class="flex gap-2 mt-2">
-                    <button onclick="exportCSV()" aria-label="Tabelle als CSV herunterladen" class="flex-1 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs py-2 rounded text-slate-100 transition focus:ring-2 focus:ring-custom-accent">
+                    <button onclick="exportCSV()" aria-label="Tabelle als CSV herunterladen" class="flex-1 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs py-2 rounded text-slate-100 transition focus:ring-2 focus:ring-uefa-accent">
                         <i class="fa-solid fa-file-csv mr-1" aria-hidden="true"></i> CSV Export
                     </button>
-                    <button onclick="toggleChartModal()" aria-label="Top-5 Vergleichsdiagramm öffnen" class="flex-1 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs py-2 rounded text-slate-100 transition focus:ring-2 focus:ring-custom-accent">
+                    <button onclick="toggleChartModal()" aria-label="Top-5 Vergleichsdiagramm öffnen" class="flex-1 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs py-2 rounded text-slate-100 transition focus:ring-2 focus:ring-uefa-accent">
                         <i class="fa-solid fa-chart-line mr-1" aria-hidden="true"></i> Vergleich
                     </button>
                 </div>
@@ -198,22 +257,22 @@
         </section>
 
         <!-- Controls, Filter & Search Section -->
-        <section aria-label="Filter- und Tabelleneinstellungen" class="bg-custom-cardDark border border-custom-borderDark rounded-xl p-4 flex flex-col md:flex-row items-center justify-between gap-4">
+        <section aria-label="Filter- und Tabelleneinstellungen" class="bg-uefa-cardDark border border-uefa-borderDark rounded-xl p-4 flex flex-col md:flex-row items-center justify-between gap-4">
             <!-- Search Input -->
             <div class="relative w-full md:w-72">
                 <label for="search-input" class="sr-only">Land suchen</label>
                 <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-300 text-sm" aria-hidden="true"></i>
                 <input type="text" id="search-input" onkeyup="filterTable()" placeholder="Land suchen (z.B. Deutschland, Spanien)..." 
-                       class="w-full pl-9 pr-4 py-2 bg-slate-900 border border-custom-borderDark rounded-lg text-sm text-slate-100 placeholder-slate-400 focus:outline-none focus:border-custom-accent">
+                       class="w-full pl-9 pr-4 py-2 bg-slate-900 border border-uefa-borderDark rounded-lg text-sm text-slate-100 placeholder-slate-400 focus:outline-none focus:border-uefa-accent">
             </div>
 
             <!-- Tab Switching (Current vs Forecast) -->
-            <div class="flex items-center bg-slate-900 p-1 rounded-lg border border-custom-borderDark w-full md:w-auto" role="tablist">
-                <button id="tab-current" role="tab" aria-selected="true" onclick="switchView('current')" class="flex-1 md:flex-none px-4 py-1.5 rounded-md text-xs font-semibold bg-custom-blue text-white shadow transition focus:ring-2 focus:ring-custom-accent">
-                    Aktuelle Fünfjahreswertung (2026/27)
+            <div class="flex items-center bg-slate-900 p-1 rounded-lg border border-uefa-borderDark w-full md:w-auto" role="tablist">
+                <button id="tab-current" role="tab" aria-selected="true" onclick="switchView('current')" class="flex-1 md:flex-none px-4 py-1.5 rounded-md text-xs font-semibold bg-uefa-blue text-white shadow transition focus:ring-2 focus:ring-uefa-accent">
+                    Aktuelle 5-Jahreswertung (2026/27)
                 </button>
-                <button id="tab-forecast" role="tab" aria-selected="false" onclick="switchView('forecast')" class="flex-1 md:flex-none px-4 py-1.5 rounded-md text-xs font-semibold text-slate-300 hover:text-white transition focus:ring-2 focus:ring-custom-accent">
-                    <i class="fa-solid fa-wand-magic-sparkles text-custom-accent mr-1" aria-hidden="true"></i> Vorschau 2027/28 (Streichjahr)
+                <button id="tab-forecast" role="tab" aria-selected="false" onclick="switchView('forecast')" class="flex-1 md:flex-none px-4 py-1.5 rounded-md text-xs font-semibold text-slate-300 hover:text-white transition focus:ring-2 focus:ring-uefa-accent">
+                    <i class="fa-solid fa-wand-magic-sparkles text-uefa-accent mr-1" aria-hidden="true"></i> Vorschau 2027/28 (Streichjahr)
                 </button>
             </div>
 
@@ -226,11 +285,11 @@
         <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
             
             <!-- Main Table Section (3 Columns wide) -->
-            <section aria-label="Haupttabelle der Fünfjahreswertung" class="lg:col-span-3 space-y-4">
-                <div class="bg-custom-cardDark border border-custom-borderDark rounded-xl overflow-hidden shadow-xl">
+            <section aria-label="5-Jahreswertung Haupttabelle" class="lg:col-span-3 space-y-4">
+                <div class="bg-uefa-cardDark border border-uefa-borderDark rounded-xl overflow-hidden shadow-xl">
                     <div class="overflow-x-auto">
                         <table class="w-full text-left text-sm" id="ranking-table">
-                            <thead class="bg-slate-900 text-xs text-slate-300 uppercase tracking-wider border-b border-custom-borderDark select-none">
+                            <thead class="bg-slate-900 text-xs text-slate-300 uppercase tracking-wider border-b border-uefa-borderDark select-none">
                                 <tr>
                                     <th scope="col" class="py-3.5 px-3 text-center">Rang</th>
                                     <th scope="col" class="py-3.5 px-4">Nation</th>
@@ -239,14 +298,14 @@
                                     <th scope="col" class="py-3.5 px-2 text-center text-slate-400">23/24</th>
                                     <th scope="col" class="py-3.5 px-2 text-center text-slate-400">24/25</th>
                                     <th scope="col" class="py-3.5 px-2 text-center text-slate-400">25/26</th>
-                                    <th scope="col" class="py-3.5 px-2 text-center text-custom-accent font-bold">26/27</th>
+                                    <th scope="col" class="py-3.5 px-2 text-center text-uefa-accent font-bold">26/27</th>
                                     <th scope="col" class="py-3.5 px-4 text-right cursor-pointer hover:text-white focus:outline-none" onclick="sortTableByTotal()" tabindex="0" aria-label="Nach Gesamtpunkten sortieren">
                                         Gesamt <i class="fa-solid fa-sort text-xs" aria-hidden="true"></i>
                                     </th>
                                     <th scope="col" class="py-3.5 px-4 text-center">Zugang</th>
                                 </tr>
                             </thead>
-                            <tbody id="table-body" class="divide-y divide-custom-borderDark/60 font-medium">
+                            <tbody id="table-body" class="divide-y divide-uefa-borderDark/60 font-medium">
                                 <!-- Dynamic Rows Generated via JS -->
                             </tbody>
                         </table>
@@ -257,15 +316,15 @@
                 <div class="ad-placeholder rounded-xl p-4 flex items-center justify-between gap-4" aria-label="Werbung">
                     <div class="flex items-center gap-4">
                         <div class="w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center text-slate-400">
-                            <i class="fa-solid fa-shield-halved text-2xl text-custom-gold" aria-hidden="true"></i>
+                            <i class="fa-solid fa-shield-halved text-2xl text-uefa-gold" aria-hidden="true"></i>
                         </div>
                         <div>
                             <span class="text-[10px] uppercase tracking-wider text-slate-300 border border-slate-500 px-1 rounded">Anzeige</span>
                             <h3 class="text-sm font-bold text-slate-100">Offizieller Sports-Wetten & Live-Stream Partner</h3>
-                            <p class="text-xs text-slate-300">Jetzt Bonus sichern auf alle europäischen Topspiele.</p>
+                            <p class="text-xs text-slate-300">Jetzt Bonus sichern auf alle UEFA Champions League Topspiele.</p>
                         </div>
                     </div>
-                    <button class="bg-custom-accent text-custom-darkBlue font-bold text-xs px-4 py-2 rounded-lg hover:bg-cyan-300 transition focus:ring-2 focus:ring-white">
+                    <button class="bg-uefa-accent text-uefa-darkBlue font-bold text-xs px-4 py-2 rounded-lg hover:bg-cyan-300 transition focus:ring-2 focus:ring-white">
                         Jetzt Wetten
                     </button>
                 </div>
@@ -284,9 +343,9 @@
                 </div>
 
                 <!-- Info Box Rules -->
-                <div class="bg-custom-cardDark border border-custom-borderDark rounded-xl p-4 text-xs space-y-3">
+                <div class="bg-uefa-cardDark border border-uefa-borderDark rounded-xl p-4 text-xs space-y-3">
                     <h2 class="font-bold text-sm text-white flex items-center gap-2">
-                        <i class="fa-solid fa-circle-info text-custom-accent" aria-hidden="true"></i> Berechnungsregeln
+                        <i class="fa-solid fa-circle-info text-uefa-accent" aria-hidden="true"></i> Berechnungsregeln
                     </h2>
                     <p class="text-slate-200 leading-relaxed">
                         Für jeden Sieg in der Hauptrunde gibt es <strong>2.000 Punkte</strong>, für ein Unentschieden <strong>1.000 Punkt</strong>.
@@ -294,27 +353,67 @@
                     <p class="text-slate-200 leading-relaxed">
                         Die Punkte aller Klubs eines Landes werden durch die Anzahl der gestarteten Klubs dividiert.
                     </p>
-                    <div class="pt-2 border-t border-custom-borderDark text-[11px] text-slate-300">
-                        <span class="text-emerald-400 font-bold">Bonus:</span> Das Erreichen der Hauptrunde bringt Bonuspunkte je nach Endplatzierung.
+                    <div class="pt-2 border-t border-uefa-borderDark text-[11px] text-slate-300">
+                        <span class="text-emerald-400 font-bold">Bonus:</span> Champions League Ligaphase bringt Bonuspunkte je nach Endplatzierung.
                     </div>
                 </div>
             </aside>
         </div>
 
+        <!-- SEO Content Section (Rich Text für Google Crawler) -->
+        <article class="bg-uefa-cardDark border border-uefa-borderDark rounded-xl p-6 space-y-4 text-xs text-slate-300 leading-relaxed">
+            <h2 class="text-lg font-bold text-white tracking-tight border-b border-uefa-borderDark pb-2">
+                Alles über die UEFA 5-Jahreswertung 2026/27 & Champions League Startplätze
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-2">
+                    <h3 class="text-sm font-semibold text-uefa-accent">Wie funktioniert der UEFA-Koeffizient?</h3>
+                    <p>
+                        Die UEFA 5-Jahreswertung ist das maßgebliche Ranking zur Vergabe von Startplätzen in den europäischen Vereinswettbewerben (UEFA Champions League, UEFA Europa League und UEFA Conference League). Sie summiert die Koeffizienten-Punkte aller Vereine eines Verbandes über die vergangenen fünf Spielzeiten.
+                    </p>
+                    <p>
+                        Jeder Sieg bringt zwei Punkte, ein Unentschieden einen Punkt. Qualifikationsspiele werden halbiert gewertet. Die Gesamtzahl der erzielten Punkte einer Nation wird am Ende durch die Gesamtzahl der gestarteten Klubs dividiert.
+                    </p>
+                </div>
+                
+                <div class="space-y-2">
+                    <h3 class="text-sm font-semibold text-uefa-accent">Was sind die European Performance Slots (EPS)?</h3>
+                    <p>
+                        Seit der Reform der Champions League zur Saison 2024/25 erhalten die zwei besten Nationen der aktuellen Einzelsaison jeweils einen zusätzlichen Startplatz in der UCL-Ligaphase. Dieser wird als "European Performance Slot" bezeichnet und ermöglicht z.B. der Bundesliga bei einer starken Europapokal-Saison 5 statt 4 Champions League Teilnehmer.
+                    </p>
+                </div>
+            </div>
+
+            <div class="pt-4 border-t border-uefa-borderDark/60">
+                <h3 class="text-sm font-semibold text-white mb-2">Häufig gestellte Fragen (FAQ)</h3>
+                <dl class="space-y-3">
+                    <div>
+                        <dt class="font-bold text-slate-200">Wie viele Teams schickt Deutschland (DFB) in die Europapokal-Saison?</dt>
+                        <dd class="text-slate-400">Deutschland schickt in der Regel 7 Mannschaften ins Rennen (4x Champions League, 2x Europa League, 1x Conference League Playoffs).</dd>
+                    </div>
+                    <div>
+                        <dt class="font-bold text-slate-200">Was bedeutet das Streichjahr in der Vorschau?</dt>
+                        <dd class="text-slate-400">Nach jeder Saison fällt die älteste der fünf Spielzeiten aus der Wertung. In unserer Vorschau für 2027/28 simulieren wir den Punktestand ohne die Saison 2022/23.</dd>
+                    </div>
+                </dl>
+            </div>
+        </article>
+
     </main>
 
     <!-- Modal for Country Detail & Competition Allocation -->
     <div id="country-modal" role="dialog" aria-modal="true" aria-labelledby="modal-country-name" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-custom-cardDark border border-custom-borderDark w-full max-w-2xl rounded-2xl overflow-hidden shadow-2xl transition-all transform">
-            <div class="bg-slate-900 px-6 py-4 border-b border-custom-borderDark flex items-center justify-between">
+        <div class="bg-uefa-cardDark border border-uefa-borderDark w-full max-w-2xl rounded-2xl overflow-hidden shadow-2xl transition-all transform">
+            <div class="bg-slate-900 px-6 py-4 border-b border-uefa-borderDark flex items-center justify-between">
                 <div class="flex items-center gap-3">
                     <span id="modal-flag" class="fi w-8 h-6 rounded shadow" role="img" aria-label="Flagge"></span>
                     <div>
                         <h2 id="modal-country-name" class="font-bold text-lg text-white">Deutschland</h2>
-                        <p id="modal-rank-info" class="text-xs text-custom-accent">Platz 4 in der Fünfjahreswertung</p>
+                        <p id="modal-rank-info" class="text-xs text-uefa-accent">Platz 4 in der UEFA 5-Jahreswertung</p>
                     </div>
                 </div>
-                <button onclick="closeModal()" aria-label="Detailfenster schließen" class="text-slate-400 hover:text-white p-2 rounded-lg focus:ring-2 focus:ring-custom-accent">
+                <button onclick="closeModal()" aria-label="Detailfenster schließen" class="text-slate-400 hover:text-white p-2 rounded-lg focus:ring-2 focus:ring-uefa-accent">
                     <i class="fa-solid fa-xmark text-xl" aria-hidden="true"></i>
                 </button>
             </div>
@@ -331,7 +430,7 @@
                 <!-- Detailed 5-Year breakdown table -->
                 <div>
                     <h3 class="text-xs font-bold uppercase tracking-wider text-slate-300 mb-3">Saison-für-Saison Koeffizienten</h3>
-                    <div class="bg-slate-900 rounded-lg p-3 border border-custom-borderDark grid grid-cols-5 gap-2 text-center text-xs">
+                    <div class="bg-slate-900 rounded-lg p-3 border border-uefa-borderDark grid grid-cols-5 gap-2 text-center text-xs">
                         <div class="p-2 bg-slate-800/50 rounded">
                             <span class="block text-[10px] text-slate-400">2022/23</span>
                             <span id="m-s1" class="font-bold text-slate-200">19.125</span>
@@ -348,8 +447,8 @@
                             <span class="block text-[10px] text-slate-400">2025/26</span>
                             <span id="m-s4" class="font-bold text-slate-200">16.500</span>
                         </div>
-                        <div class="p-2 bg-custom-blue/40 border border-custom-accent/40 rounded">
-                            <span class="block text-[10px] text-custom-accent font-semibold">2026/27</span>
+                        <div class="p-2 bg-uefa-blue/40 border border-uefa-accent/40 rounded">
+                            <span class="block text-[10px] text-uefa-accent font-semibold">2026/27</span>
                             <span id="m-s5" class="font-bold text-white">12.143</span>
                         </div>
                     </div>
@@ -365,8 +464,8 @@
                 </div>
             </div>
             
-            <div class="bg-slate-900 px-6 py-3 border-t border-custom-borderDark flex justify-end">
-                <button onclick="closeModal()" class="bg-slate-800 hover:bg-slate-700 text-white text-xs px-4 py-2 rounded-lg font-semibold transition focus:ring-2 focus:ring-custom-accent">
+            <div class="bg-slate-900 px-6 py-3 border-t border-uefa-borderDark flex justify-end">
+                <button onclick="closeModal()" class="bg-slate-800 hover:bg-slate-700 text-white text-xs px-4 py-2 rounded-lg font-semibold transition focus:ring-2 focus:ring-uefa-accent">
                     Schließen
                 </button>
             </div>
@@ -375,18 +474,18 @@
 
     <!-- Graph Comparison Modal -->
     <div id="chart-modal" role="dialog" aria-modal="true" aria-labelledby="chart-modal-title" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-custom-cardDark border border-custom-borderDark w-full max-w-4xl rounded-2xl overflow-hidden shadow-2xl">
-            <div class="bg-slate-900 px-6 py-4 border-b border-custom-borderDark flex items-center justify-between">
+        <div class="bg-uefa-cardDark border border-uefa-borderDark w-full max-w-4xl rounded-2xl overflow-hidden shadow-2xl">
+            <div class="bg-slate-900 px-6 py-4 border-b border-uefa-borderDark flex items-center justify-between">
                 <h2 id="chart-modal-title" class="font-bold text-lg text-white flex items-center gap-2">
-                    <i class="fa-solid fa-chart-line text-custom-accent" aria-hidden="true"></i> Top 5 Punkteverlauf der letzten 5 Jahre
+                    <i class="fa-solid fa-chart-line text-uefa-accent" aria-hidden="true"></i> Top 5 Punkteverlauf der letzten 5 Jahre
                 </h2>
-                <button onclick="toggleChartModal()" aria-label="Diagramm-Fenster schließen" class="text-slate-400 hover:text-white p-2 rounded-lg focus:ring-2 focus:ring-custom-accent">
+                <button onclick="toggleChartModal()" aria-label="Diagramm-Fenster schließen" class="text-slate-400 hover:text-white p-2 rounded-lg focus:ring-2 focus:ring-uefa-accent">
                     <i class="fa-solid fa-xmark text-xl" aria-hidden="true"></i>
                 </button>
             </div>
             <div class="p-6">
                 <div class="h-80 w-full">
-                    <canvas id="rankingChart" aria-label="Vergleichsdiagramm der Top 5 Nationen"></canvas>
+                    <canvas id="rankingChart" aria-label="Vergleichsdiagramm der Top 5 UEFA Nationen"></canvas>
                 </div>
             </div>
         </div>
@@ -394,27 +493,73 @@
 
     <!-- Data & Application Logic JS -->
     <script>
-        // Ranking Dataset with ISO codes for SVG Flags
+        // UEFA 5-Year Ranking Dataset with ISO 3166-1 alpha-2 codes for SVG Flags
+        // isLive property indicates if a country currently has active matches on ground
         const countryData = [
-            { rank: 1, iso: "gb", name: "England", s1: 23.000, s2: 17.375, s3: 24.250, s4: 20.500, s5: 21.303, teams: "8/8" },
-            { rank: 2, iso: "it", name: "Italien", s1: 22.357, s2: 21.000, s3: 20.750, s4: 19.250, s5: 18.142, teams: "7/7" },
-            { rank: 3, iso: "es", name: "Spanien", s1: 16.571, s2: 16.000, s3: 21.857, s4: 18.500, s5: 17.125, teams: "7/7" },
-            { rank: 4, iso: "de", name: "Deutschland", s1: 19.125, s2: 19.357, s3: 17.071, s4: 16.500, s5: 12.143, teams: "7/7" },
-            { rank: 5, iso: "fr", name: "Frankreich", s1: 12.583, s2: 16.250, s3: 16.250, s4: 15.500, s5: 14.200, teams: "6/7" },
-            { rank: 6, iso: "nl", name: "Niederlande", s1: 13.500, s2: 10.000, s3: 14.500, s4: 16.200, s5: 12.400, teams: "5/6" },
-            { rank: 7, iso: "pt", name: "Portugal", s1: 12.500, s2: 11.000, s3: 12.166, s4: 14.500, s5: 13.600, teams: "4/5" },
-            { rank: 8, iso: "be", name: "Belgien", s1: 14.200, s2: 14.400, s3: 13.800, s4: 12.600, s5: 10.800, teams: "4/5" },
-            { rank: 9, iso: "tr", name: "Türkei", s1: 11.800, s2: 12.000, s3: 10.600, s4: 11.500, s5: 9.800, teams: "4/5" },
-            { rank: 10, iso: "cz", name: "Tschechien", s1: 6.750, s2: 13.500, s3: 9.300, s4: 11.000, s5: 9.200, teams: "3/5" },
-            { rank: 11, iso: "gb-sct", name: "Schottland", s1: 3.500, s2: 6.400, s3: 11.200, s4: 9.000, s5: 7.500, teams: "2/5" },
-            { rank: 12, iso: "ch", name: "Schweiz", s1: 8.500, s2: 5.200, s3: 10.000, s4: 8.800, s5: 6.400, teams: "2/5" },
-            { rank: 13, iso: "at", name: "Österreich", s1: 4.900, s2: 4.800, s3: 8.400, s4: 7.600, s5: 6.200, teams: "2/5" },
-            { rank: 14, iso: "no", name: "Norwegen", s1: 5.750, s2: 8.000, s3: 5.375, s4: 8.250, s5: 6.125, teams: "2/4" },
-            { rank: 15, iso: "gr", name: "Griechenland", s1: 2.125, s2: 11.400, s3: 9.000, s4: 6.200, s5: 5.800, teams: "2/4" }
+            { rank: 1, iso: "gb", name: "England", s1: 23.000, s2: 17.375, s3: 24.250, s4: 20.500, s5: 21.303, teams: "8/8", isLive: true },
+            { rank: 2, iso: "it", name: "Italien", s1: 22.357, s2: 21.000, s3: 20.750, s4: 19.250, s5: 18.142, teams: "7/7", isLive: false },
+            { rank: 3, iso: "es", name: "Spanien", s1: 16.571, s2: 16.000, s3: 21.857, s4: 18.500, s5: 17.125, teams: "7/7", isLive: true },
+            { rank: 4, iso: "de", name: "Deutschland", s1: 19.125, s2: 19.357, s3: 17.071, s4: 16.500, s5: 12.143, teams: "7/7", isLive: true },
+            { rank: 5, iso: "fr", name: "Frankreich", s1: 12.583, s2: 16.250, s3: 16.250, s4: 15.500, s5: 14.200, teams: "6/7", isLive: false },
+            { rank: 6, iso: "nl", name: "Niederlande", s1: 13.500, s2: 10.000, s3: 14.500, s4: 16.200, s5: 12.400, teams: "5/6", isLive: false },
+            { rank: 7, iso: "pt", name: "Portugal", s1: 12.500, s2: 11.000, s3: 12.166, s4: 14.500, s5: 13.600, teams: "4/5", isLive: false },
+            { rank: 8, iso: "be", name: "Belgien", s1: 14.200, s2: 14.400, s3: 13.800, s4: 12.600, s5: 10.800, teams: "4/5", isLive: false },
+            { rank: 9, iso: "tr", name: "Türkei", s1: 11.800, s2: 12.000, s3: 10.600, s4: 11.500, s5: 9.800, teams: "4/5", isLive: false },
+            { rank: 10, iso: "cz", name: "Tschechien", s1: 6.750, s2: 13.500, s3: 9.300, s4: 11.000, s5: 9.200, teams: "3/5", isLive: false },
+            { rank: 11, iso: "gb-sct", name: "Schottland", s1: 3.500, s2: 6.400, s3: 11.200, s4: 9.000, s5: 7.500, teams: "2/5", isLive: false },
+            { rank: 12, iso: "ch", name: "Schweiz", s1: 8.500, s2: 5.200, s3: 10.000, s4: 8.800, s5: 6.400, teams: "2/5", isLive: false },
+            { rank: 13, iso: "at", name: "Österreich", s1: 4.900, s2: 4.800, s3: 8.400, s4: 7.600, s5: 6.200, teams: "2/5", isLive: false },
+            { rank: 14, iso: "no", name: "Norwegen", s1: 5.750, s2: 8.000, s3: 5.375, s4: 8.250, s5: 6.125, teams: "2/4", isLive: false },
+            { rank: 15, iso: "gr", name: "Griechenland", s1: 2.125, s2: 11.400, s3: 9.000, s4: 6.200, s5: 5.800, teams: "2/4", isLive: false }
         ];
 
-        let currentViewMode = 'current';
+        // Sample Live Europapokal Matches for Swipe Bar
+        const liveMatches = [
+            { competition: "UCL", home: "Bayern München", homeIso: "de", scoreHome: 2, scoreAway: 1, away: "Real Madrid", awayIso: "es", minute: "74'", status: "LIVE" },
+            { competition: "UCL", home: "Arsenal FC", homeIso: "gb", scoreHome: 1, scoreAway: 1, away: "PSG", awayIso: "fr", minute: "62'", status: "LIVE" },
+            { competition: "UEL", home: "Eintracht Frankfurt", homeIso: "de", scoreHome: 3, scoreAway: 0, away: "AS Roma", awayIso: "it", minute: "81'", status: "LIVE" },
+            { competition: "UECL", home: "Real Betis", homeIso: "es", scoreHome: 0, scoreAway: 0, away: "Chelsea FC", awayIso: "gb", minute: "38'", status: "LIVE" }
+        ];
 
+        let currentViewMode = 'current'; // 'current' or 'forecast'
+
+        // Render Horizontal Live Match Ticker
+        function renderLiveTicker() {
+            const container = document.getElementById('live-match-ticker');
+            container.innerHTML = '';
+
+            liveMatches.forEach(m => {
+                const card = document.createElement('div');
+                card.className = "flex-shrink-0 bg-uefa-cardDark border border-uefa-borderDark/80 rounded-xl p-3 w-64 shadow-md hover:border-uefa-accent transition cursor-pointer";
+                card.innerHTML = `
+                    <div class="flex items-center justify-between text-[10px] font-bold text-slate-400 mb-2">
+                        <span class="px-1.5 py-0.5 rounded bg-blue-900/60 text-uefa-accent border border-uefa-accent/30">${m.competition}</span>
+                        <span class="text-amber-400 flex items-center gap-1 font-mono">
+                            <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span> ${m.minute}
+                        </span>
+                    </div>
+                    <div class="space-y-1 text-xs">
+                        <div class="flex items-center justify-between font-semibold">
+                            <div class="flex items-center gap-2">
+                                <span class="fi fi-${m.homeIso} w-4 h-3 rounded shadow-xs"></span>
+                                <span class="text-slate-200 truncate max-w-[120px]">${m.home}</span>
+                            </div>
+                            <span class="font-bold text-white font-mono">${m.scoreHome}</span>
+                        </div>
+                        <div class="flex items-center justify-between font-semibold">
+                            <div class="flex items-center gap-2">
+                                <span class="fi fi-${m.awayIso} w-4 h-3 rounded shadow-xs"></span>
+                                <span class="text-slate-200 truncate max-w-[120px]">${m.away}</span>
+                            </div>
+                            <span class="font-bold text-white font-mono">${m.scoreAway}</span>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Render Table Data
         function renderTable() {
             const tbody = document.getElementById('table-body');
             tbody.innerHTML = '';
@@ -440,7 +585,7 @@
                 const total = item.total.toFixed(3);
 
                 const tr = document.createElement('tr');
-                tr.className = "hover:bg-slate-800/80 transition border-b border-custom-borderDark/40 cursor-pointer focus:outline-none focus:bg-slate-800";
+                tr.className = "hover:bg-slate-800/80 transition border-b border-uefa-borderDark/40 cursor-pointer focus:outline-none focus:bg-slate-800";
                 tr.tabIndex = 0;
                 tr.setAttribute('aria-label', `Rang ${currentRank}, ${item.name}, Gesamtpunkte: ${total}`);
                 tr.onclick = () => openModal(item, currentRank);
@@ -452,11 +597,20 @@
                 };
 
                 const slotsBadge = getSlotsBadge(currentRank);
+                
+                // Live Dot Indicator (Amber / Gelb-Orange) next to Flag
+                const liveDot = item.isLive 
+                    ? `<span class="relative flex h-2.5 w-2.5 flex-shrink-0" title="Aktuell ein Europapokal-Spiel live!">
+                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                         <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-400"></span>
+                       </span>`
+                    : `<span class="w-2.5 h-2.5 flex-shrink-0"></span>`;
 
                 tr.innerHTML = `
                     <td class="py-3.5 px-3 text-center font-bold text-slate-200">${currentRank}</td>
                     <td class="py-3.5 px-4 font-bold text-white">
-                        <div class="flex items-center gap-3">
+                        <div class="flex items-center gap-2.5">
+                            ${liveDot}
                             <span class="fi fi-${item.iso} w-6 h-4 rounded shadow-sm flex-shrink-0" role="img" aria-label="Flagge von ${item.name}"></span>
                             <span>${item.name}</span>
                         </div>
@@ -468,7 +622,7 @@
                     <td class="py-3.5 px-2 text-center text-xs text-slate-300">${item.s2.toFixed(3)}</td>
                     <td class="py-3.5 px-2 text-center text-xs text-slate-300">${item.s3.toFixed(3)}</td>
                     <td class="py-3.5 px-2 text-center text-xs text-slate-300">${item.s4.toFixed(3)}</td>
-                    <td class="py-3.5 px-2 text-center text-xs text-custom-accent font-bold">${item.s5.toFixed(3)}</td>
+                    <td class="py-3.5 px-2 text-center text-xs text-uefa-accent font-bold">${item.s5.toFixed(3)}</td>
                     <td class="py-3.5 px-4 text-right font-extrabold text-white text-base font-mono">${total}</td>
                     <td class="py-3.5 px-4 text-center">${slotsBadge}</td>
                 `;
@@ -476,31 +630,242 @@
             });
         }
 
+        // Return allocation badge for UEFA competitions
         function getSlotsBadge(rank) {
             if (rank <= 4) {
-                return `<span class="bg-blue-600/30 text-blue-300 border border-blue-500/50 px-2 py-1 rounded text-[11px] font-bold">4x Hauptrunde</span>`;
+                return `<span class="bg-blue-600/30 text-blue-300 border border-blue-500/50 px-2 py-1 rounded text-[11px] font-bold">4x UCL Ligaphase</span>`;
             } else if (rank === 5) {
-                return `<span class="bg-cyan-600/30 text-cyan-300 border border-cyan-500/50 px-2 py-1 rounded text-[11px] font-bold">3x Direkt / 1x Quali</span>`;
+                return `<span class="bg-cyan-600/30 text-cyan-300 border border-cyan-500/50 px-2 py-1 rounded text-[11px] font-bold">3x UCL / 1x Quali</span>`;
             } else if (rank === 6) {
-                return `<span class="bg-indigo-600/30 text-indigo-300 border border-indigo-500/50 px-2 py-1 rounded text-[11px] font-bold">2x Direkt / 1x Quali</span>`;
+                return `<span class="bg-indigo-600/30 text-indigo-300 border border-indigo-500/50 px-2 py-1 rounded text-[11px] font-bold">2x UCL / 1x Quali</span>`;
             } else if (rank <= 10) {
-                return `<span class="bg-amber-600/30 text-amber-300 border border-amber-500/50 px-2 py-1 rounded text-[11px] font-bold">1x Hauptrunde</span>`;
+                return `<span class="bg-amber-600/30 text-amber-300 border border-amber-500/50 px-2 py-1 rounded text-[11px] font-bold">1x UCL Ligaphase</span>`;
             } else if (rank <= 15) {
-                return `<span class="bg-orange-600/30 text-orange-300 border border-orange-500/50 px-2 py-1 rounded text-[11px] font-bold">2x Qualifikation</span>`;
+                return `<span class="bg-orange-600/30 text-orange-300 border border-orange-500/50 px-2 py-1 rounded text-[11px] font-bold">2x UCL Quali</span>`;
             } else {
-                return `<span class="bg-slate-700 text-slate-200 px-2 py-1 rounded text-[11px]">1x Qualifikation</span>`;
+                return `<span class="bg-slate-700 text-slate-200 px-2 py-1 rounded text-[11px]">1x UCL Quali</span>`;
             }
         }
 
+        // Switch View Modes (Current vs Forecast)
         function switchView(mode) {
             currentViewMode = mode;
             const btnCurrent = document.getElementById('tab-current');
             const btnForecast = document.getElementById('tab-forecast');
 
             if (mode === 'current') {
-                btnCurrent.className = "flex-1 md:flex-none px-4 py-1.5 rounded-md text-xs font-semibold bg-custom-blue text-white shadow transition focus:ring-2 focus:ring-custom-accent";
+                btnCurrent.className = "flex-1 md:flex-none px-4 py-1.5 rounded-md text-xs font-semibold bg-uefa-blue text-white shadow transition focus:ring-2 focus:ring-uefa-accent";
                 btnCurrent.setAttribute('aria-selected', 'true');
-                btnForecast.className = "flex-1 md:flex-none px-4 py-1.5 rounded-md text-xs font-semibold text-slate-300 hover:text-white transition focus:ring-2 focus:ring-custom-accent";
+                btnForecast.className = "flex-1 md:flex-none px-4 py-1.5 rounded-md text-xs font-semibold text-slate-300 hover:text-white transition focus:ring-2 focus:ring-uefa-accent";
                 btnForecast.setAttribute('aria-selected', 'false');
             } else {
-                btnForecast.className = "flex-1 md:flex-none px-4 py-1.5 rounded-md text-xs font-
+                btnForecast.className = "flex-1 md:flex-none px-4 py-1.5 rounded-md text-xs font-semibold bg-uefa-blue text-white shadow transition focus:ring-2 focus:ring-uefa-accent";
+                btnForecast.setAttribute('aria-selected', 'true');
+                btnCurrent.className = "flex-1 md:flex-none px-4 py-1.5 rounded-md text-xs font-semibold text-slate-300 hover:text-white transition focus:ring-2 focus:ring-uefa-accent";
+                btnCurrent.setAttribute('aria-selected', 'false');
+            }
+            renderTable();
+        }
+
+        // Search Filter
+        function filterTable() {
+            const query = document.getElementById('search-input').value.toLowerCase();
+            const rows = document.querySelectorAll('#table-body tr');
+
+            rows.forEach(row => {
+                const text = row.innerText.toLowerCase();
+                row.style.display = text.includes(query) ? "" : "none";
+            });
+        }
+
+        // Sort Toggle
+        let sortAsc = false;
+        function sortTableByTotal() {
+            sortAsc = !sortAsc;
+            countryData.sort((a, b) => {
+                const totalA = a.s1 + a.s2 + a.s3 + a.s4 + a.s5;
+                const totalB = b.s1 + b.s2 + b.s3 + b.s4 + b.s5;
+                return sortAsc ? totalA - totalB : totalB - totalA;
+            });
+            renderTable();
+        }
+
+        // Open Detail Modal
+        function openModal(item, rank) {
+            const modalFlag = document.getElementById('modal-flag');
+            modalFlag.className = `fi fi-${item.iso} w-8 h-6 rounded shadow`;
+            modalFlag.setAttribute('aria-label', `Flagge von ${item.name}`);
+
+            document.getElementById('modal-country-name').innerText = item.name;
+            document.getElementById('modal-rank-info').innerText = `Rang ${rank} in der UEFA 5-Jahreswertung`;
+            
+            document.getElementById('m-s1').innerText = item.s1.toFixed(3);
+            document.getElementById('m-s2').innerText = item.s2.toFixed(3);
+            document.getElementById('m-s3').innerText = item.s3.toFixed(3);
+            document.getElementById('m-s4').innerText = item.s4.toFixed(3);
+            document.getElementById('m-s5').innerText = item.s5.toFixed(3);
+
+            document.getElementById('modal-drop-text').innerText = `Für die Saison 2027/28 verliert ${item.name} die ${item.s1.toFixed(3)} Punkte aus der Saison 22/23.`;
+
+            const slotsContainer = document.getElementById('modal-slots-container');
+            slotsContainer.innerHTML = getDetailedQualificationSlots(rank);
+
+            document.getElementById('country-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('country-modal').classList.add('hidden');
+        }
+
+        // ESC key listener to close modals
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+                const chartModal = document.getElementById('chart-modal');
+                if (!chartModal.classList.contains('hidden')) {
+                    toggleChartModal();
+                }
+            }
+        });
+
+        function getDetailedQualificationSlots(rank) {
+            if (rank <= 4) {
+                return `
+                    <div class="flex items-center justify-between p-2.5 bg-slate-900 border border-slate-800 rounded-lg">
+                        <span class="flex items-center gap-2 text-xs font-semibold text-blue-300"><i class="fa-solid fa-star" aria-hidden="true"></i> UEFA Champions League</span>
+                        <span class="text-xs font-bold text-slate-200">4x Ligaphase (Direkt)</span>
+                    </div>
+                    <div class="flex items-center justify-between p-2.5 bg-slate-900 border border-slate-800 rounded-lg">
+                        <span class="flex items-center gap-2 text-xs font-semibold text-amber-300"><i class="fa-solid fa-trophy" aria-hidden="true"></i> UEFA Europa League</span>
+                        <span class="text-xs font-bold text-slate-200">2x Ligaphase (Direkt)</span>
+                    </div>
+                    <div class="flex items-center justify-between p-2.5 bg-slate-900 border border-slate-800 rounded-lg">
+                        <span class="flex items-center gap-2 text-xs font-semibold text-emerald-300"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> UEFA Conference League</span>
+                        <span class="text-xs font-bold text-slate-200">1x Playoffs</span>
+                    </div>
+                `;
+            } else if (rank === 5) {
+                return `
+                    <div class="flex items-center justify-between p-2.5 bg-slate-900 border border-slate-800 rounded-lg">
+                        <span class="flex items-center gap-2 text-xs font-semibold text-blue-300"><i class="fa-solid fa-star" aria-hidden="true"></i> UEFA Champions League</span>
+                        <span class="text-xs font-bold text-slate-200">3x Direkt / 1x Q3</span>
+                    </div>
+                    <div class="flex items-center justify-between p-2.5 bg-slate-900 border border-slate-800 rounded-lg">
+                        <span class="flex items-center gap-2 text-xs font-semibold text-amber-300"><i class="fa-solid fa-trophy" aria-hidden="true"></i> UEFA Europa League</span>
+                        <span class="text-xs font-bold text-slate-200">2x Ligaphase</span>
+                    </div>
+                `;
+            } else {
+                return `
+                    <div class="flex items-center justify-between p-2.5 bg-slate-900 border border-slate-800 rounded-lg">
+                        <span class="flex items-center gap-2 text-xs font-semibold text-blue-300"><i class="fa-solid fa-star" aria-hidden="true"></i> UEFA Champions League</span>
+                        <span class="text-xs font-bold text-slate-200">Qualifikationsplätze je nach Platzierung</span>
+                    </div>
+                `;
+            }
+        }
+
+        // AI Sync Simulation Trigger
+        function triggerAISync() {
+            const icon = document.getElementById('sync-icon');
+            const btn = document.getElementById('sync-btn');
+            
+            icon.classList.add('fa-spin');
+            btn.classList.add('opacity-75');
+
+            setTimeout(() => {
+                countryData.forEach(c => {
+                    c.s5 += Math.floor(Math.random() * 300) / 1000;
+                });
+
+                const now = new Date();
+                const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                document.getElementById('last-update-time').innerText = `Gerade eben um ${timeString} Uhr (KI Parsed)`;
+
+                renderTable();
+                
+                icon.classList.remove('fa-spin');
+                btn.classList.remove('opacity-75');
+            }, 1000);
+        }
+
+        // Export Data to CSV
+        function exportCSV() {
+            let csvContent = "data:text/csv;charset=utf-8,Rang;Land;Teams;22/23;23/24;24/25;25/26;26/27;Gesamt\n";
+            countryData.forEach((c, index) => {
+                const total = (c.s1 + c.s2 + c.s3 + c.s4 + c.s5).toFixed(3);
+                csvContent += `${index + 1};${c.name};${c.teams};${c.s1};${c.s2};${c.s3};${c.s4};${c.s5};${total}\n`;
+            });
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "UEFA_5_Jahreswertung_2026_27.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Theme Toggle Functionality
+        function toggleDarkMode() {
+            const html = document.documentElement;
+            const icon = document.getElementById('theme-toggle-icon');
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                html.classList.add('light');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                html.classList.remove('light');
+                html.classList.add('dark');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        }
+
+        // Chart.js Comparison Modal
+        let chartInstance = null;
+        function toggleChartModal() {
+            const modal = document.getElementById('chart-modal');
+            modal.classList.toggle('hidden');
+
+            if (!modal.classList.contains('hidden') && !chartInstance) {
+                const ctx = document.getElementById('rankingChart').getContext('2d');
+                const top5 = countryData.slice(0, 5);
+
+                chartInstance = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['2022/23', '2023/24', '2024/25', '2025/26', '2026/27'],
+                        datasets: top5.map((c, i) => ({
+                            label: c.name,
+                            data: [c.s1, c.s2, c.s3, c.s4, c.s5],
+                            borderColor: ['#00F0FF', '#FFD700', '#FF4B4B', '#10B981', '#A855F7'][i],
+                            backgroundColor: 'transparent',
+                            tension: 0.3,
+                            borderWidth: 3
+                        }))
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { labels: { color: '#CBD5E1' } }
+                        },
+                        scales: {
+                            x: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#94A3B8' } },
+                            y: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#94A3B8' } }
+                        }
+                    }
+                });
+            }
+        }
+
+        // Initial Page Load
+        window.onload = function() {
+            renderLiveTicker();
+            renderTable();
+        };
+    </script>
+</body>
+</html>
